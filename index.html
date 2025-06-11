@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nosso Amor</title>
+<style>
+  :root {
+    --bg-color: #121212;
+    --text-color: #f5f5f5;
+    --highlight-color: #ffffff;
+    --accent-color: #45b968;
+    --timer-color: #4caf50;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    color: var(--highlight-color);
+    margin-bottom: 0.5rem;
+    animation: fadeInDown 1s ease-out;
+    position: relative;
+    z-index: 1;
+  }
+
+  h2 {
+    color: var(--accent-color);
+    margin-top: 2rem;
+    animation: fadeIn 2s ease;
+    position: relative;
+    z-index: 1;
+  }
+
+  p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 1rem auto;
+    line-height: 1.5;
+    animation: fadeIn 2s ease;
+    position: relative;
+    z-index: 1;
+  }
+
+  #timer {
+    font-size: 1.8rem;
+    color: var(--timer-color);
+    margin: 1rem 0;
+    font-weight: bold;
+    animation: fadeInUp 1s ease;
+    position: relative;
+    z-index: 1;
+  }
+
+  .background-photo {
+    position: absolute;
+    width: 180px;
+    border-radius: 12px;
+    opacity: 0.3;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 0;
+    cursor: pointer;
+  }
+
+  .background-photo:hover {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+
+  #lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+
+  #lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.7);
+  }
+
+  @keyframes fadeInDown {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @media (max-width: 600px) {
+    .background-photo {
+      width: 120px;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    #timer {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<h1>❤️ Nossos dias ❤️</h1>
+<p>Como você ama uma surpresa pensei um tentar fazer isso pra ter ver sem graça e feliz meu bem</p>
+
+<h2>⏳ Estamos juntos há:</h2>
+<div id="timer">Calculando...</div>
+
+<p>
+  Já se passaram três anos desde que criei coragem para te pedir em namoro, e posso dizer com toda certeza: essa foi a melhor escolha que já fiz.
+  Sei que nem sempre tudo são flores, que há dias difíceis, mas mesmo assim, te amo mais a cada dia. Quero estar com você todos os dias da minha vida, e falo isso com o coração: não quero deixar nada abalar o que construímos juntos.
+  <br><br>
+  Quero aproveitar cada etapa ao seu lado: montar nosso apartamento com a nossa cara, do jeitinho que sonhamos, transformar ele no nosso lar.
+  Penso, sim, em casamento (claro que penso!) e, por mais que pareça surpreendente, quero muito ter filhos com você. Quero criá-los com amor, construir uma família linda, comprar uma casa maior e envelhecer ao seu lado, devagarzinho, curtindo cada momento.
+  <br><br>
+  Só te peço paciência para que a gente possa realizar todos esses sonhos juntos.
+  Te amo com todo o meu coração. ❤️
+</p>
+
+<div id="lightbox">
+  <img src="" alt="Foto em tela cheia" />
+</div>
+
+<script>
+  // Cronômetro ajustado
+  const now = new Date();
+  const totalHours = (2 * 365 + 364) * 24 + 7;
+  const startDate = new Date(now.getTime() - totalHours * 60 * 60 * 1000);
+
+  const timerElement = document.getElementById('timer');
+
+  function updateTimer() {
+    const now = new Date();
+    const diff = now - startDate;
+
+    const seconds = Math.floor(diff / 1000) % 60;
+    const minutes = Math.floor(diff / (1000 * 60)) % 60;
+    const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+    const years = Math.floor(days / 365);
+    const remainingDays = days % 365;
+
+    let display = '';
+    if (years > 0) display += `${years} anos, `;
+    display += `${remainingDays} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos`;
+
+    timerElement.textContent = display;
+  }
+
+  updateTimer();
+  setInterval(updateTimer, 1000);
+
+  // Distribuição das fotos
+  const photos = [
+    "WhatsApp Image 2025-06-11 at 00.32.34.jpeg",
+    "WhatsApp Image 2025-06-11 at 00.32.35 (1).jpeg",
+    "WhatsApp Image 2025-06-11 at 00.32.35 (2).jpeg",
+    "WhatsApp Image 2025-06-11 at 00.32.35 (3).jpeg",
+    "WhatsApp Image 2025-06-11 at 00.32.35.jpeg",
+    "WhatsApp Image 2025-06-11 at 00.32.36 (1).jpeg",
+    "WhatsApp Image 2025-06-11 at 00.32.36 (2).jpeg",
+    "WhatsApp Image 2025-06-11 at 00.32.36 (3).jpeg",
+    "WhatsApp Image 2025-06-11 at 00.32.36.jpeg",
+    "WhatsApp Image 2025-06-11 at 00.32.37 (1).jpeg"
+  ];
+
+  const columns = 4;
+  const rows = Math.ceil(photos.length / columns);
+
+  photos.forEach((src, index) => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.classList.add('background-photo');
+
+    const row = Math.floor(index / columns);
+    const col = index % columns;
+    const top = (row + 0.5) * (100 / rows);
+    const left = (col + 0.5) * (100 / columns);
+
+    img.style.top = `${top}%`;
+    img.style.left = `${left}%`;
+    img.style.transform = `translate(-50%, -50%) rotate(${Math.random() * 20 - 10}deg)`;
+
+    img.addEventListener('click', () => {
+      const lightbox = document.getElementById('lightbox');
+      lightbox.querySelector('img').src = src;
+      lightbox.style.display = 'flex';
+    });
+
+    document.body.appendChild(img);
+  });
+
+  document.getElementById('lightbox').addEventListener('click', () => {
+    document.getElementById('lightbox').style.display = 'none';
+  });
+</script>
+
+</body>
+</html>
