@@ -42,7 +42,7 @@
 
   p {
     font-size: 1.2rem;
-    max-width: 600px;
+    max-width: 90%;
     margin: 1rem auto;
     line-height: 1.5;
     animation: fadeIn 2s ease;
@@ -75,6 +75,7 @@
     transform: scale(1.1);
   }
 
+  /* Lightbox */
   #lightbox {
     position: fixed;
     top: 0;
@@ -112,27 +113,29 @@
 
   @media (max-width: 600px) {
     .background-photo {
-      width: 120px;
+      width: 140px;
+      padding: 5px;
     }
 
     h1 {
-      font-size: 2rem;
+      font-size: 2.2rem;
     }
 
     #timer {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
     }
 
     p {
       font-size: 1rem;
+      max-width: 90%;
     }
   }
 </style>
 </head>
 <body>
 
-<h1>❤️ Nossos dias ❤️</h1>
-<p>Como você ama uma surpresa pensei um tentar fazer isso pra ter ver sem graça e feliz meu bem</p>
+<h1>❤️ Nosso Amor ❤️</h1>
+<p>Esse é o nosso cantinho especial, para lembrar o quanto somos incríveis juntos!</p>
 
 <h2>⏳ Estamos juntos há:</h2>
 <div id="timer">Calculando...</div>
@@ -153,12 +156,24 @@
 </div>
 
 <script>
-  // Cronômetro ajustado
-  const now = new Date();
-  const totalHours = (2 * 365 + 364) * 24 + 7;
-  const startDate = new Date(now.getTime() - totalHours * 60 * 60 * 1000);
+  // Fotos de fundo
+  const photos = [
+    "WhatsApp Image 2025-06-11 at 00.32.34.jpeg",
+    "WhatsApp Image 2025-06-11 at 00.32.35 (1).jpeg",
+    "WhatsApp Image 2025-06-11 at 00.32.35 (2).jpeg",
+    "WhatsApp Image 2025-06-11 at 00.32.35 (3).jpeg",
+    "WhatsApp Image 2025-06-11 at 00.32.35.jpeg",
+    "WhatsApp Image 2025-06-11 at 00.32.36 (1).jpeg",
+    "WhatsApp Image 2025-06-11 at 00.32.36 (2).jpeg",
+    "WhatsApp Image 2025-06-11 at 00.32.36 (3).jpeg",
+    "WhatsApp Image 2025-06-11 at 00.32.36.jpeg",
+    "WhatsApp Image 2025-06-11 at 00.32.37 (1).jpeg"
+  ];
 
   const timerElement = document.getElementById('timer');
+
+  // Cronômetro: data inicial exata (ajustada)
+  const startDate = new Date(2022, 5, 11, 17); // Junho 11, 2022 às 17:00 (2 anos, 364 dias e 7 horas atrás)
 
   function updateTimer() {
     const now = new Date();
@@ -182,21 +197,9 @@
   updateTimer();
   setInterval(updateTimer, 1000);
 
-  // Distribuição das fotos
-  const photos = [
-    "WhatsApp Image 2025-06-11 at 00.32.34.jpeg",
-    "WhatsApp Image 2025-06-11 at 00.32.35 (1).jpeg",
-    "WhatsApp Image 2025-06-11 at 00.32.35 (2).jpeg",
-    "WhatsApp Image 2025-06-11 at 00.32.35 (3).jpeg",
-    "WhatsApp Image 2025-06-11 at 00.32.35.jpeg",
-    "WhatsApp Image 2025-06-11 at 00.32.36 (1).jpeg",
-    "WhatsApp Image 2025-06-11 at 00.32.36 (2).jpeg",
-    "WhatsApp Image 2025-06-11 at 00.32.36 (3).jpeg",
-    "WhatsApp Image 2025-06-11 at 00.32.36.jpeg",
-    "WhatsApp Image 2025-06-11 at 00.32.37 (1).jpeg"
-  ];
-
-  const columns = 4;
+  // Detecta se é mobile para ajustar colunas
+  const isMobile = window.innerWidth <= 600;
+  const columns = isMobile ? 2 : 4;
   const rows = Math.ceil(photos.length / columns);
 
   photos.forEach((src, index) => {
@@ -222,6 +225,7 @@
     document.body.appendChild(img);
   });
 
+  // Fecha lightbox ao clicar fora da imagem
   document.getElementById('lightbox').addEventListener('click', () => {
     document.getElementById('lightbox').style.display = 'none';
   });
